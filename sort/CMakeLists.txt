@@ -3,4 +3,4 @@ project(Notes-on-Introduction-to-Algorithms)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(Notes-on-Introduction-to-Algorithms test_sort.cpp)
+add_executable(Notes-on-Introduction-to-Algorithms test_sort.cpp quick_sort.hpp merge_sort.h)
