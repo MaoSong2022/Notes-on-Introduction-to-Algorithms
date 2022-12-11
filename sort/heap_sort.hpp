@@ -1,23 +1,32 @@
+//
+// Created by Mao Song on 2022/12/11.
+//
+
+#ifndef NOTES_ON_INTRODUCTION_TO_ALGORITHMS_HEAP_SORT_HPP
+#define NOTES_ON_INTRODUCTION_TO_ALGORITHMS_HEAP_SORT_HPP
+
 #include <vector>
 
 namespace Sort {
     /**
-     * @brief make sure the root value is "smaller" than its children and successors.
-     *        will call itself recursively until the whole tree satisfy the above requirements.
+     * @brief make sure the root value is "smaller" than its children and
+     * successors. will call itself recursively until the whole tree satisfy the
+     * above requirements.
      * @tparam T :type of elements in array
      * @tparam compare [optional]: exact meaning of "smaller"
      * @param array : the array to maintain
      * @param index : the index of root
      * @param size  : the range of array, may not equal to the size of array
      */
-    template<typename T, typename compare = std::less<T> >
+    template<typename T, typename compare = std::less<T>>
     void heapify(std::vector<T> &array, int index, int size) {
         int max_index = index;
 
         if (2 * index + 1 < size && compare()(array[index], array[2 * index + 1])) {
             max_index = 2 * index + 1;
         }
-        if (2 * index + 2 < size && compare()(array[max_index], array[2 * index + 2])) {
+        if (2 * index + 2 < size &&
+            compare()(array[max_index], array[2 * index + 2])) {
             max_index = 2 * index + 2;
         }
         if (max_index == index) {
@@ -34,7 +43,7 @@ namespace Sort {
      * @tparam compare [optional] : comparator, small root if not given
      * @param array : the array to sort
      */
-    template<typename T = int, typename compare = std::less<T> >
+    template<typename T = int, typename compare = std::less<T>>
     void heap_sort(std::vector<T> &array) {
         int n = array.size();
         // build heap
@@ -47,4 +56,6 @@ namespace Sort {
             heapify<T, compare>(array, 0, i);
         }
     }
-}
+} // namespace Sort
+
+#endif // NOTES_ON_INTRODUCTION_TO_ALGORITHMS_HEAP_SORT_HPP
