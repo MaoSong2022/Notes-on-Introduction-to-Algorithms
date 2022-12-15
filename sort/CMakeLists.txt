@@ -17,7 +17,7 @@ enable_testing()
 add_executable(
         sort_test
         sort_test.cpp
-)
+        selection_sort.hpp bubble_sort.hpp)
 
 target_link_libraries(
         sort_test
