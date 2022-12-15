@@ -25,7 +25,10 @@ namespace Sort {
 
     template<typename T, typename compare = std::less<T>>
     int randomized_partition(std::vector<int> &array, int left, int right) {
-        int index = left + std::rand() % (right - left + 1);
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<int> intDistribution(left, right);
+        int index = intDistribution(gen);
         std::swap(array[index], array[right]);
         partition<T, compare>(array, left, right);
     }
@@ -41,6 +44,7 @@ namespace Sort {
 
     template<typename T = int, typename compare = std::less<T>>
     void quick_sort(std::vector<int> &array) {
+//        int n = static_cast<int>(array.size());
         int n = array.size();
         quick_sort<T, compare>(array, 0, n - 1);
     }
