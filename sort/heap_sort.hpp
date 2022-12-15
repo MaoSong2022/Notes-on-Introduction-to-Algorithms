@@ -33,7 +33,7 @@ namespace Sort {
             return;
         }
         std::swap(array[index], array[max_index]);
-        heapify(array, max_index, size);
+        heapify<T, compare>(array, max_index, size);
     }
 
     /**
